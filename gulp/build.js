@@ -11,6 +11,9 @@ var path = require('path');
 var gulp = require('gulp');
 var conf = require('./config');
 
+var optipng = require('imagemin-optipng');
+var pngquant = require('imagemin-pngquant');
+
 var plugins = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files',  'del', 'csso']
 });
@@ -76,7 +79,7 @@ gulp.task('html', ['inject', 'partials'], function () {
     .pipe(jsFilter.restore)
     .pipe(cssFilter)
     .pipe(plugins.sourcemaps.init())
-    .pipe(plugins.minifyCss({ processImport: false }))
+    .pipe(plugins.csso())
     .pipe(plugins.sourcemaps.write('maps'))
     .pipe(cssFilter.restore)
     .pipe(assets.restore())
@@ -97,7 +100,7 @@ gulp.task('html', ['inject', 'partials'], function () {
 
 /** Get Other Files */
 gulp.task('other', function () {
-  var fileFilter = $.filter(function (file) {
+  var fileFilter = plugins.filter(function (file) {
     return file.stat.isFile();
   });
 
@@ -114,9 +117,20 @@ gulp.task('other', function () {
  * Move and flatten Fonts
  */
 gulp.task('fonts', function () {
-   return gulp.src(path.join(conf.paths.assets, "/fonts/**/*.{eot,svg,ttf,woff,woff2}"))
+   return gulp.src(path.join(conf.paths.assets, "fonts/**/*.{eot,svg,ttf,woff,woff2}"))
      .pipe(plugins.flatten())
      .pipe(gulp.dest(path.join(conf.paths.dist, '/assets/fonts/')));
+});
+
+/**
+ * Optimize images in /assets/images and place in min/image
+*/
+gulp.task('images', function() {
+    return gulp.src(path.join(conf.paths.assets, 'images/**/*.{png,jpg,jpeg,gif,svg}'))
+      .pipe(optipng({ optimizationLevel: 3 })())
+      .pipe(pngquant({quality: '65-80', speed: 4})())
+      .pipe(gulp.dest(path.join(conf.paths.dist, '/assets/images')))
+      .pipe(plugins.size({showFiles: true}));
 });
 
 
