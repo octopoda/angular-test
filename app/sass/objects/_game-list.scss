@@ -1,0 +1,71 @@
+/*
+|--------------------------------------------------------------------------
+| Game List Component on Intro PAge 
+|--------------------------------------------------------------------------
+|
+| Variations of game list will be on the page/_intro.scss
+| 
+|
+*/
+
+.game-list {
+	width:100%;
+	margin:auto;
+
+	ul, li  { @include clearMP; }
+
+	h2, ul {
+		margin: auto;
+		text-align: center;
+		font-size:rem-calc(16);
+		line-height:rem-calc(18);
+		width:100%;
+	}
+
+	ul {
+		width:100%;
+	}
+
+	
+
+	li {
+		list-style:none;
+		width:100%;
+		padding:rem-calc(10) rem-calc(8);
+
+		a {
+			text-decoration: none;
+		}
+
+
+		&:hover {
+			&:before {
+				content: '';
+				border-top: 10px solid transparent;
+				border-bottom: 10px solid transparent;
+				border-left: 10px solid $black;
+				position: absolute;
+				margin-left: rem-calc(-25); 
+				// margin-top:rem-calc(10);
+			}
+		}
+	}
+
+	@include breakpoint('tablet') {
+		
+		h2 {
+			font-size:rem-calc(24);
+			line-height: rem-calc(32);
+		
+		}
+		
+		ul {
+			width: span(8 of 12);
+			margin:auto;
+		}
+
+	}
+
+
+	
+}

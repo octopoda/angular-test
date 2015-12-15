@@ -1,0 +1,62 @@
+
+
+.intro {
+	margin-top:rem-calc(60);
+	@include container;
+	padding-bottom:rem-calc(350);
+	
+
+	@include breakpoint('tablet') {
+		width:80%;
+		margin:auto;
+		
+	}
+
+
+	@include breakpoint('laptop') {
+		width:60%;
+		margin-top:rem-calc(120);
+		margin:auto;
+		padding-bottom:rem-calc(200);
+	}
+}
+
+
+.intro__title {
+	text-align: center;
+	font-size:rem-calc(60);
+	text-shadow:5px 5px 0px $black;
+	
+
+	small {
+		font-size:rem-calc(20);
+	}
+
+	@include breakpoint('desktop') {
+		font-size:rem-calc(90);
+		text-shadow:7px 7px 0px $black;
+
+		small {
+			font-size:rem-calc(40);	
+		}
+	}
+}
+
+.intro__game-modes {
+	width:100%;
+	margin:auto;
+
+	h2 {
+		margin-bottom:rem-calc(20);
+	}
+}
+
+
+.intro__game-started {
+	h2 {
+		margin-bottom:rem-calc(40);
+		line-height:rem-calc(40);
+	}
+
+}
+

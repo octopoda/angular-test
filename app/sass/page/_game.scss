@@ -1,0 +1,86 @@
+/*
+|--------------------------------------------------------------------------
+| Style for Game
+|--------------------------------------------------------------------------
+|
+|
+*/
+
+
+.game__navigation {
+	@include container();
+
+	h3 {
+		font-size:rem-calc(12);
+		margin-top:rem-calc(15);
+		color:$white;
+		
+		span{
+			display:none
+		}
+	}
+
+
+	
+
+	&__rounds {
+		@include span(6 of 12);
+		
+		h3 {
+			text-align: left;
+			margin-left:rem-calc(10);
+		}
+	}
+
+	&__score {
+		@include span(6 of 12 last);
+		
+		h3 {
+			text-align: right;
+			margin-right:rem-calc(15);
+		}
+	}
+
+
+	@include breakpoint('tablet') {
+		h3 {
+			margin-left:rem-calc(30);
+			font-size:rem-calc(18);
+		}
+	}
+
+	@include breakpoint('laptop') {
+		h3 {
+			span {display:inline-block;}
+		}
+	}
+}
+
+
+.game__wrapper {
+	margin-top:rem-calc(60);
+	width:100%;
+	@include container;
+	margin:auto;
+	padding-bottom:rem-calc(350);
+
+	h1 {
+		text-align: center;
+		font-size:rem-calc(40);
+		line-height:rem-calc(55);
+		text-shadow:5px 5px 0px $black;
+	}
+
+
+	@include breakpoint('laptop') {
+		margin-top:rem-calc(80);
+	}
+}
+
+
+
+
+
+
+
+

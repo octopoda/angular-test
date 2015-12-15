@@ -1,0 +1,91 @@
+.modal-overlay {
+	display:none;
+
+	&.active {
+		display: block;
+		position: fixed;
+		height:100%;
+		width:100%;
+		background:rgba($black, 0.8);
+		top:0;
+		z-index:5;	
+	}
+}
+
+.score-wrapper {
+	position: fixed;
+	z-index:6;
+	
+	&__score {
+		position: fixed;
+		z-index:10000;
+		@include center(xy);
+		@include transition(opacity 0.3s ease-in);
+		display:none;
+		opacity:0;
+		font-family:$header-font;
+		color:$red;
+		text-align: center;
+	
+
+		
+
+		h1 {
+			font-size:rem-calc(150);
+			line-height:rem-calc(20);
+		}
+
+		h3 {
+			font-size:rem-calc(40);
+		}
+	}
+
+
+	a {
+		text-decoration: none;
+	}
+
+
+	&.active .score-wrapper__score {
+		display:block;
+		opacity:1;				
+		text-shadow: 0 5px 5px #000;
+
+
+		h1 {
+			animation: spinNumber 0.3s ease-in 2;
+		}
+	}
+
+	@include breakpoint('tablet') {
+		&__score {
+			h1 {
+				font-size:rem-calc(300);
+				line-height:rem-calc(20);
+			}
+
+			h3 {
+				font-size:rem-calc(60);
+			}
+		}
+	}
+}
+
+
+
+/*
+| Animation
+|--------------------------------------------------------------------------
+|
+|
+*/
+
+@keyframes spinNumber {
+	from {
+		@include rotate(0deg);
+	}
+
+	to {
+		@include rotate(360deg);
+	}
+}

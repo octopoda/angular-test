@@ -1,0 +1,129 @@
+	
+/*
+|--------------------------------------------------------------------------
+| Styles for Game Card
+|--------------------------------------------------------------------------
+|
+| styles for game card template.  /templates/game/gamecard.html
+| 
+|
+*/
+
+
+
+.game-card__list {
+	@include container();
+	margin-top:rem-calc(35);
+	
+	li {
+		list-style:none;
+		display: inline-block;
+		text-align: center;
+		@include span(2 of 4);
+	}
+
+	@include breakpoint('tablet') {
+		//code)
+	}
+
+	@include breakpoint('laptop') {
+		li {
+			@include span(3 of 12);
+			&:nth-child(n+4) {
+				@include last();
+			}
+		}
+	}
+}
+
+
+.game-card__person {
+	position: relative;
+	width:80%;
+	cursor: pointer;
+
+
+
+	text-align: center;
+	border-radius:50% 50% !important;
+	box-shadow: 0 0 0 5px rgba($black, 0.1);
+	overflow:hidden !important;
+	backface-visbility: hidden;
+	transform: scale(1);
+	margin-bottom:rem-calc(50);
+
+	.overlay {
+		background:none;
+		position: absolute;
+		height:100%;
+		width:100%;
+		opacity:0.5;
+		@include transition(background ease-in 0.6s);
+		
+		
+		.winner & {
+			background:$green;
+			span {
+				opacity:1;
+			}
+		}
+	
+		.not-winner & {
+			background:$red;
+			span {
+				opacity:1;
+			}
+		}
+
+		span {
+			font-size:rem-calc(80);
+			position: absolute;
+			@include center(xy);
+			@include transition(opacity $cubic 0.4s);
+			opacity:0;
+		}
+	}
+
+
+	.game-card__image {
+		z-index:$z-layer-range-6;
+		
+		img {
+			width:100%;
+			text-align: center;
+		}
+	}
+
+
+	@include breakpoint('laptop') {
+		width:90%;
+	}
+}
+
+
+
+
+/*
+
+| Animations
+|--------------------------------------------------------------------------
+|
+|
+*/
+
+
+@keyframes fromTheTop {
+	from {
+		@include translate(-20px, -500%);
+		
+	}
+	
+	to {
+		@include translate(0, 0);
+	}
+}
+
+
+
+
+

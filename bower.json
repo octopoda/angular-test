@@ -1,0 +1,27 @@
+{
+  "name": "wt-namegame-zackdavis",
+  "description": "Name game test from WillowTree Apps for Zack Davis",
+  "main": "index.html",
+  "authors": [
+    "Zack Davis (https://2721west.com)"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8",
+    "susy": "~2.2.9",
+    "angular-toastr": "~1.6.0",
+    "angular-ui-router": "~0.2.15",
+    "angular-cookies": "~1.4.8",
+    "toastr": "~2.1.2",
+    "angular-animate": "~1.4.8"
+  }
+}

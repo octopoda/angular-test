@@ -1,0 +1,28 @@
+<section class="intro" id="intro">
+
+	<h1 class="intro__title"><small>The</small> <br> Name<br> Game</h1>
+
+
+	<!-- Brand New Game -->
+	<div class="intro__game-modes  game-list" data-ng-hide="vm.resume">
+		<h2>Game Mode</h2>
+		<ul class="game-list__list">
+			<li class="button selected"><a href="" data-ng-click="vm.setGameMode(1)">The New Guy</a></li>
+			<li class="button"><a href="" data-ng-click="vm.setGameMode(2)">Training</a></li>
+			<li class="button"><a href="" data-ng-click="vm.setGameMode(3)">Seasoned Pro</a></li>
+			<li class="button"><a href="" data-ng-click="vm.setGameMode(4)">God Mode</a></li>
+			<li data-ng-if="vm.dev"><a href="" data-ng-click="vm.deleteCookie()">Delete Cookie</a></li>
+		</ul>	
+	</div>
+
+
+	<!-- Already started a game -->
+	<div class="intro__game-started game-list" data-ng-show="vm.resume">
+		<h2>Would you like to resume your previous game?</h2>
+		<ul class="game-list__list">
+			<li class="button"><a href="" data-ng-click="vm.goToGame()">Resume Game</a></li>
+			<li class="button"><a href="" data-ng-click="vm.newGame()">Start a New Game</a></li>
+			<li data-ng-if="vm.dev"><a href="" data-ng-click="vm.deleteCookie()">Delete Cookie</a></li>
+		</ul>
+	</div>
+</section>

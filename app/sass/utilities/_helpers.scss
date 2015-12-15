@@ -1,0 +1,63 @@
+.small-phone-only {
+	display:block;
+
+	@include breakpoint('large-phone') {
+		display:none;
+	}
+}
+
+.phone-only{
+	display:block;
+
+	@include breakpoint('tablet') { 
+		display:none;
+	}
+}
+
+.tablet-only {
+	display:none;
+	
+	@include breakpoint('tablet') {
+		display:block	
+	}
+	@include breakpoint('laptop') {
+		display:none;
+	}
+}
+
+.tablet-up {
+	display:none;
+
+	@include breakpoint('tablet') {
+		display:block;
+	}
+}
+
+.tablet-down {
+
+	@include breakpoint('laptop') {
+		display:none;
+	}
+}
+
+.laptop-up {
+	display: none;
+
+	@include breakpoint('laptop') {
+		display:block;
+	}
+}
+
+
+.hide {
+	display:none;
+}
+
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+
+
+

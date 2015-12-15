@@ -1,0 +1,33 @@
+/*
+|--------------------------------------------------------------------------
+| Placholders for the Global Scope
+|--------------------------------------------------------------------------
+|
+| Placeholder helpers needed for the global scope
+| can be called using @extend %placholdername
+| will not be printed in css
+|
+*/
+
+
+/**
+ * ClearFix
+ */
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+
+%RetroText {
+	font-family: $header-font;
+}
+
+
+
+
+
+

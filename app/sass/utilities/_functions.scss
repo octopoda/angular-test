@@ -1,0 +1,105 @@
+
+/**
+ * Calculate PX in REM
+ * @param  {Pixel Size} $target
+ * @param  {Basic Rem Size} $context: $base-font-size
+ */
+@function rem-calc($target,$context:$base-font-size) {
+	$remSize : $target/$context;
+	@return #{$remSize}rem;
+}
+
+@function em-calc($target, $context:$base-font-size) {
+	$emSize: $target/$context; 
+	@return #{$emSize}em;
+}
+
+@function image-calc($width, $height) {
+	$size: ($height/$width) * 100;
+	@return #{$size}%;
+}
+
+
+
+/**
+ * Set Range for Media Queries
+ * @param  $range  in PX
+ */
+@function setRange($first, $last) {
+	$last: $last - 1;
+	@return "(min-width:"+ em-calc($first) +") and (max-width: "+ em-calc($last) +")";
+}
+
+
+/**
+ * Get the Media From the Breakpoints List
+ * @param  {string} $name 
+ * @return {string}
+ */
+@function getMediaQuery($name) {
+	$query:'';
+	@if map-get(map-get($breakpoints, $name), mq) != null {
+		$query: map-get(map-get($breakpoints, $name), mq);
+	} @else {
+		$query: '(min-width:'+  map-get(map-get($breakpoints, $name), min-width) +' )';
+	}
+
+	@return $query;
+}
+
+
+/**
+ * Enable Bar
+ * @param  {[type]} $breakpoints [description]
+ * @return {[type]}              [description]
+ */
+@function getCombinedBreakpoints($breakpoints) {
+	$breakpoint: '';
+	@each $bp in $breakpoints {
+		$bpMQ: getMediaQuery($bp);
+		@if $bpMQ == false {
+			@return false;
+		} @else {
+			$breakpoint: $breakpoint + getMediaQuery($bp) + ',';
+		}
+	}
+
+	@return str-slice($breakpoint, 1, -2);
+}
+
+
+/**
+ * Get Break Point Property
+ * @param  {string} $property 
+ * @param  {map} $bp       
+ * @return {string}           
+ */
+@function get-breakpoint-property($property, $bp) {
+	@return map-get(map-get($bp-sizes, $bp), $property);
+}
+
+/**
+ *  Expotential Mutiplications
+ * @param  {int} $x
+ * @param  {int} $y
+ * @return {int}
+ */
+@function pow($x, $y) {
+  $ret: 1;
+
+  @if $y > 0 {
+    @for $i from 1 through $y {
+        $ret: $ret * $x;
+    }
+  }
+
+  @else {
+    @for $i from $y to 0 {
+        $ret: $ret / $x;
+    }
+  }
+
+  @return $ret;
+}
+
+

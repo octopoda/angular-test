@@ -1,0 +1,39 @@
+/*
+|--------------------------------------------------------------------------
+| App.Css
+|--------------------------------------------------------------------------
+|
+| Importer for All Sass files for modularization
+| 
+|
+*/
+
+
+
+
+
+//Utilities
+@import 'utilities/normalize';
+@import '../../bower_components/susy/sass/_susy.scss';
+@import 'utilities/functions';
+@import 'utilities/settings';
+@import 'utilities/mixins';
+@import 'utilities/fonts';
+@import 'utilities/animation';
+@import 'utilities/helpers';
+@import 'utilities/placeholders';
+@import 'utilities/typography';
+
+
+//Objects and Components
+@import 'objects/sitewide';
+@import 'objects/game-list';
+@import 'objects/game-card';
+@import 'objects/score-wrapper';
+@import 'objects/results-list';
+
+//Individual Pages
+@import 'page/intro';
+@import 'page/game';
+@import 'page/results';
+

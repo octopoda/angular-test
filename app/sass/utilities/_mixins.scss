@@ -1,0 +1,231 @@
+// We use this to do clear floats
+@mixin clearfix {
+  &:before, &:after { content: " "; display: table; }
+  &:after { clear: both; }
+}
+
+/**
+ * Vertical Align and Block Element
+ */
+@mixin vertical-align() {
+	position:relative;
+	top:50%;
+	-webkit-transform: translateY(-25%);
+	-ms-transform: translateY(-25%);
+	transform: translateY(-25%);
+}
+
+/**
+ * Center an absolute positioined element vertically or Horizontially 
+ * @param  {string} $xy:xy  Center based on string
+ */
+@mixin center($xy:xy) {
+  @if $xy == xy {
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    @include transform(translateX(-50%) translateY(-50%));
+  }
+  @else if $xy == x {
+    left: 50%;
+    right: auto;
+    @include transform(translateX(-50%));
+  }
+  @else if $xy == y {
+    top: 50%;
+    bottom: auto;
+    @include transform(translateY(-50%));
+  }
+}
+
+
+
+/**
+ * Clear out the Margin and PAdding
+ */
+@mixin clearMP() {
+	margin:0;
+	padding:0;
+}
+
+
+/**
+ * Fall Back for Rem Component
+ * @param  $selector
+ * @param  $target
+ * @param  $context
+ */
+@mixin rem-fallback($selector, $target, $context:$base-font-size) {
+	#{$selector} : ($target) + px;
+	#{$selector} : rem-calc($target, $context);
+}
+
+
+
+/**
+ * Setup Breakpoints based on _setting definition
+ * @param  $name "Breakpoint Name"
+ * @return @media-query
+ */
+@mixin breakpoint($breakpoint) {
+	$mediaQuery: getCombinedBreakpoints($breakpoint);
+	@if $mediaQuery == false {
+		@warn "Unable to generate media query for breakpoint(s) #{$breakpoint}"
+	} @else {
+		@media #{$mediaQuery} {
+			@content;
+		}
+	}
+}
+
+
+/**
+ * Remove List style and display list as a display Item
+ * @param  {string} $inline:inline  inline or block
+ * @return {context}
+ */
+@mixin displayList($inline:inline) {
+	ul, li {@include clearMP;}
+
+	li {
+		list-style:none;
+	}
+
+	@if $inline == inline {
+		li {
+			display: inline-block;
+		}
+	}
+	@else {
+	  li {
+	  	display:block;
+	  }
+	}
+}
+
+
+/**
+ * Make a Burger Menu
+ */
+@mixin burger() {
+    position: relative;
+    margin-top: $burger-hg;
+    margin-bottom: $burger-hg;
+
+    &, &:before, &:after {
+        display: block;
+        width: $burger-width;
+        height: $burger-height;
+        background-color: $burger-color;
+        @include transition(background-color, transform ease-in 0.2s);
+    }
+
+    &:before, &:after {
+        position: absolute;
+        content: "";
+    }
+
+    &:before {
+        top: -$burger-hg;
+    }
+
+    &:after {
+        top: $burger-hg;
+    }
+}
+
+
+/**
+ * Select parts of the burger
+ */
+
+@mixin burger-parts {
+    &, &:before, &:after {
+        @content;
+    }
+}
+
+@mixin burger-top {
+    &:before {
+        @content;
+    }
+}
+
+@mixin burger-middle {
+    & {
+        @content;
+    }
+}
+
+@mixin burger-bottom {
+    &:after {
+        @content;
+    }
+}
+
+
+/**
+ * Burger animations
+ */
+
+@mixin burger-to-cross {
+    & {
+        background-color: transparent;
+    }
+
+    &:before {
+		@include transform(translateY($burger-hg) rotate(45deg))
+	}
+    &:after {
+		@include transform(translateY(-$burger-hg) rotate(-45deg))
+    }
+}
+
+
+/**
+ * Stagger a list 
+ */
+@mixin staggerList($childrenNum, $element) {
+    $delay: 0.3;
+    
+    @for $i from 1 through $childrenNum {
+        &:nth-child(#{$i}) #{$element} { 
+            @include transition(#{$delay}s)
+        }
+
+        $delay: $delay + 0.3;
+    }
+    
+}
+
+
+/**
+ * Vertical Gradient
+ */
+@mixin verticalGradient($fromColor, $toColor) {
+    background: $toColor; /* Old browsers */
+    background: -moz-linear-gradient(top, $fromColor 0%, $toColor 60%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$fromColor), color-stop(60%,$toColor)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, $fromColor 0%,$toColor 60%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, $fromColor 0%,$toColor 60%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, $fromColor 0%,$toColor 60%); /* IE10+ */
+    background: linear-gradient(to bottom, $fromColor 0%,$toColor 60%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$fromColor', endColorstr='$toColor',GradientType=0 ); /* IE6-9 */
+}
+
+@mixin linearGraident($fromColor, $toColor) {
+    background: $toColor; /* Old browsers */
+    background: -moz-linear-gradient(left,  $fromColor 0%, $toColor 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,$fromColor), color-stop(100%,$toColor)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  $fromColor 0%,$toColor 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  $fromColor 0%,$toColor 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  $fromColor 0%,$toColor 100%); /* IE10+ */
+    background: linear-gradient(to right,  $fromColor 0%,$toColor 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$fromColor', endColorstr='$toColor',GradientType=1 ); /* IE6-9 */
+
+}
+
+
+
+

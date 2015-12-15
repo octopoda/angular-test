@@ -1,0 +1,41 @@
+
+
+html {
+	min-height:100%;
+	position: relative;
+}
+
+body {
+	// @include verticalGradient($gray-dark, $gray-darker);
+	background: $gray-dark;
+	background-image: url('#{$imagePath}/city-scape.png');
+	background-image: url('#{$imagePath}/city-scape.png'), linear-gradient(top, $gray-dark 0%, $gray-darker 60%);
+	height:100%;
+	background-repeat:repeat-x;
+	background-position:center bottom;
+
+
+	&.lightning {
+		background:$black;
+		animation: lightning 0.2s linear 7;
+	}
+}
+
+
+
+.ng-hide {
+	display:none;
+	@include transition(opacity ease-in 0.3s);
+	opacity:0;
+}
+
+
+@keyframes lightning {
+	from {background:$white; }
+	to {
+		@include verticalGradient($gray-dark, darken($gray-dark, 15%));
+	}
+	
+}
+
+

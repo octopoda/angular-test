@@ -1,0 +1,175 @@
+/*
+|--------------------------------------------------------------------------
+| Animation and Transition Mixins
+|--------------------------------------------------------------------------
+|
+|
+*/
+
+// Transitions
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+     -moz-transition: $transition;
+       -o-transition: $transition;
+          transition: $transition;
+}
+
+@mixin transformTransition($duration) {
+  -webkit-transition: -webkit-transform $duration;
+     -moz-transition: -moz-transform $duration;
+       -o-transition: -o-transform $duration;
+          transition: transform $duration;
+}
+
+@mixin transformOrigin($x) {
+    -webkit-transform-origin: $x; 
+       -moz-transform-origin: $x;
+        -ms-transform-origin: $x; 
+         -o-transform-origin: $x;
+            transform-origin: $x;
+}
+
+
+@mixin transition-delay($transition-delay) {
+  -webkit-transition-delay: $transition-delay;
+     -moz-transition-delay: $transition-delay;
+       -o-transition-delay: $transition-delay;
+          transition-delay: $transition-delay;
+}
+@mixin transition-duration($transition-duration) {
+  -webkit-transition-duration: $transition-duration;
+     -moz-transition-duration: $transition-duration;
+       -o-transition-duration: $transition-duration;
+          transition-duration: $transition-duration;
+}
+
+// Transformations
+@mixin rotate($degrees) {
+  -webkit-transform: rotate($degrees);
+     -moz-transform: rotate($degrees);
+      -ms-transform: rotate($degrees);
+       -o-transform: rotate($degrees);
+          transform: rotate($degrees);
+}
+
+@mixin rotateZ($degrees) {
+  -webkit-transform: rotateZ($degrees);
+     -moz-transform: rotateZ($degrees);
+      -ms-transform: rotateZ($degrees);
+       -o-transform: rotateZ($degrees);
+          transform: rotateZ($degrees); 
+}
+
+
+@mixin rotate3d($x, $y, $z, $deg) {
+  -webkit-transform: rotate3d($x, $y, $z, $deg);
+     -moz-transform: rotate3d($x, $y, $z, $deg);
+      -ms-transform: rotate3d($x, $y, $z, $deg);
+       -o-transform: rotate3d($x, $y, $z, $deg);
+          transform: rotate3d($x, $y, $z, $deg); 
+}
+
+@mixin scale($ratio) {
+  -webkit-transform: scale($ratio);
+     -moz-transform: scale($ratio);
+      -ms-transform: scale($ratio);
+       -o-transform: scale($ratio);
+          transform: scale($ratio);
+}
+@mixin translate($x, $y) {
+  -webkit-transform: translate($x, $y);
+     -moz-transform: translate($x, $y);
+      -ms-transform: translate($x, $y);
+       -o-transform: translate($x, $y);
+          transform: translate($x, $y);
+}
+
+
+@mixin translateX($x) {
+  -webkit-transform: translateX($x);
+     -moz-transform: translateX($x);
+      -ms-transform: translateX($x);
+       -o-transform: translateX($x);
+          transform: translateX($x);
+}
+
+@mixin translateY($y) {
+  -webkit-transform: translateY($y);
+     -moz-transform: translateY($y);
+      -ms-transform: translateY($y);
+       -o-transform: translateY($y);
+          transform: translateY($y);
+}
+
+@mixin translateZ($z) {
+  -webkit-transform: translateZ($z);
+     -moz-transform: translateZ($z);
+      -ms-transform: translateZ($z);
+       -o-transform: translateZ($z);
+          transform: translateZ($z);
+}
+
+@mixin perspective($px) {
+  -webkit-transform: perspective($px);
+     -moz-transform: perspective($px);
+      -ms-transform: perspective($px);
+       -o-transform: perspective($px);
+          transform: perspective($px); 
+}
+
+
+
+
+@mixin skew($x, $y) {
+  -webkit-transform: skew($x, $y);
+     -moz-transform: skew($x, $y);
+      -ms-transform: skewX($x) skewY($y); // See https://github.com/twitter/bootstrap/issues/4885
+       -o-transform: skew($x, $y);
+          transform: skew($x, $y);
+  -webkit-backface-visibility: hidden; // See https://github.com/twitter/bootstrap/issues/5319
+}
+
+@mixin translate3d($x, $y, $z) {
+  -webkit-transform: translate3d($x, $y, $z);
+     -moz-transform: translate3d($x, $y, $z);
+       -o-transform: translate3d($x, $y, $z);
+          transform: translate3d($x, $y, $z);
+}
+
+
+@mixin transformTranslate($percentA,  $percentB) {
+  -webkit-transform: translate($percentA, $percentB);
+      -ms-transform: translate($percentA, $percentB);
+          transform: translate($percentA, $percentB);
+}
+
+@mixin transform($code) {
+  -webkit-transform: $code;
+     -moz-transform: $code;
+      -ms-transform: $code;
+       -o-transform: $code;
+          transform: $code;
+}
+
+
+@mixin animation($animation) {
+  -webkit-animation: $animation;
+     -moz-animation: $animation;
+       -o-animation: $animation;
+}
+
+// Backface visibility
+// Prevent browsers from flickering when using CSS 3D transforms.
+// Default value is `visible`, but can be changed to `hidden
+// See git pull https://github.com/dannykeane/bootstrap.git backface-visibility for examples
+@mixin backface-visibility($visibility){
+  -webkit-backface-visibility: $visibility;
+     -moz-backface-visibility: $visibility;
+          backface-visibility: $visibility;
+}
+
+
+
+
+
+

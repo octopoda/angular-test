@@ -1,0 +1,41 @@
+<!-- Navigation -->
+<nav class="game__navigation">
+	<div class="game__navigation__rounds">
+		<h3>The Name Game</h3>
+	</div>
+</nav>
+
+
+<section class="results__wrapper">
+	
+	<!-- Current Game Scores -->
+	<div class="title results__box">
+		<h2>Your Score</h2>
+		<div class="results-list">
+			<ul>
+				<li class="results-list__result  large">
+					<div class="results-list__result__score"><span>Score:</span>  {{ vm.Current.score }} </div>
+					<div class="results-list__result__mode"><span>Mode:</span>   {{ vm.Current.modeTitle }} </div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- High Scores -->
+	<div ng-if="vm.Previous" class="high-score results__box">
+		<h2>Total High Scores</h2>
+		<div class="results-list">
+			<ul>
+				<li data-ng-repeat="game in vm.Previous" class="repeat-animation results-list__result">
+					<div class="results-list__result__score"><span>Score:</span>  {{ game.score }} </div>
+					<div class="results-list__result__mode"><span>Mode:</span> {{ game.modeTitle }}</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- New Game -->
+	<div class="results__buttons">
+		<a href="#" data-ng-click="vm.playAgain()">Play Again</a>
+	</div>
+</section>

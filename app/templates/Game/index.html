@@ -1,0 +1,30 @@
+<!-- Navigation -->
+<nav class="game__navigation">
+	<div class="game__navigation__rounds">
+		<h3><span>The Name Game :</span>  Round {{ vm.Rounds }} of 6</h3>
+	</div>
+
+	<div class="game__navigation__score">
+		<h3>Your Score: {{ vm.TotalScore }}</h3>
+	</div>
+</nav>
+
+
+<!-- Game Pieces -->
+<div class="game__wrapper">
+	<h1>{{ vm.Winner.name }}</h1>
+	<game-card data-game-cards="vm.GameCards" data-winner="vm.Winner"></game-card>
+</div>
+
+
+<!-- Score -->
+<div class="modal-overlay" id="modal"></div>
+<div class="score-wrapper" id="scoreWrapper">
+	<div class="score-wrapper__score">
+		<h3>Your Score</h3>
+		<h1>{{ vm.Score }}</h1>
+		<div><a href="#" data-ng-click="vm.getNextRound()">Next Round</a></div>
+	</div>
+</div>
+
+

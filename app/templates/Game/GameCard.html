@@ -1,0 +1,13 @@
+<ul class="game-card__list image-list">
+	<li data-ng-repeat="cards in vm.gameCards" data-ng-click="vm.checkForWin($event, cards.id)"  id="gameCard{{ cards.id }}" class="repeat-animation game-card" ng-cloak>
+		<div class="game-card__person">
+			<div class="game-card__image">
+				<div class="overlay">
+					<span class="overlay-text">X</span>
+				</div>
+				<img data-ng-src="{{ cards.url }}" data-ng-alt="{{ cards.name }}" >
+			</div>
+			
+		</div>
+	</li>
+</ul>

@@ -1,0 +1,44 @@
+.results-list__result {
+	@include container();
+	
+	list-style:none;
+	color:$white;
+	margin-top:rem-calc(15);
+
+	div span {
+		display: inline-block;
+		margin-right:rem-calc(20);
+		color:$red;
+		width:40%;
+		margin-bottom:rem-calc(20);
+	}
+
+	
+	&.large {
+		font-size:rem-calc(24);
+		
+		span {
+			font-size:rem-calc(20);
+		}
+	}
+
+
+	@include breakpoint('tablet') {
+		div span {
+			width:30%;
+		}	
+	
+
+		&__score {
+			@include span(6 of 12);
+		}
+
+		&__mode {
+			@include span(6 of 12);
+		}
+	}
+
+	
+
+
+}

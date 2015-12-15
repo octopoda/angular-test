@@ -1,0 +1,52 @@
+.results__wrapper {
+	@include container();
+	margin-top:rem-calc(80);
+}
+
+
+.results__box {
+	width:100%;
+
+	h2 {
+		text-align: left;
+		font-size:rem-calc(16);
+		margin-bottom:rem-calc(20);
+		border-bottom:1px solid $black;
+		padding-bottom:rem-calc(10);
+		padding-left:rem-calc(10);
+	}
+
+	@include breakpoint('tablet') {
+		width: span(9 of 12);
+		margin:auto;
+
+		h2 {
+			text-align: center;
+			border-botttom:none;
+		}
+	}
+
+	@include breakpoint('laptop') {
+		width: span(8 of 12);
+		margin:auto;
+	}
+}
+
+
+.high-score {
+	margin-top:rem-calc(80);
+}
+
+
+
+.results__buttons {
+	text-align: center;
+	margin-top:rem-calc(100);
+	
+	a {
+		text-decoration: none;
+		font-size:rem-calc(30);
+	}
+
+
+}
