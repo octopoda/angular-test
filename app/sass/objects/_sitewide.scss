@@ -1,4 +1,10 @@
-
+/*
+|--------------------------------------------------------------------------
+| Site Wide Styls
+|--------------------------------------------------------------------------
+|
+| 
+*/
 
 html {
 	min-height:100%;
@@ -16,24 +22,32 @@ body {
 
 
 	&.lightning {
-		background:$black;
+		background-color:$black;
 		animation: lightning 0.2s linear 7;
 	}
 }
 
 
-
-.ng-hide {
-	display:none;
-	@include transition(opacity ease-in 0.3s);
-	opacity:0;
-}
+/*
+| Animations
+|--------------------------------------------------------------------------
+| 
+|
+*/
 
 
 @keyframes lightning {
-	from {background:$white; }
+	from {
+		background:$white; 
+		background-image: url('#{$imagePath}/city-scape.png');
+		background-repeat:repeat-x;
+		background-position:center bottom;
+	}
 	to {
-		@include verticalGradient($gray-dark, darken($gray-dark, 15%));
+		background: $gray-dark;
+		background-image: url('#{$imagePath}/city-scape.png'), linear-gradient(top, $gray-dark 0%, $gray-darker 60%);
+		background-repeat:repeat-x;
+		background-position:center bottom;
 	}
 	
 }

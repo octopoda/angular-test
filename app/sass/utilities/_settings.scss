@@ -166,34 +166,6 @@ $cubic-sidebar: cubic-bezier(.91,.01,.6,.99);
 $cubic-menu: cubic-bezier(1, 0.1, .51, 1);
 
 
-//Progress Spinner
-$spinner-size: rem-calc(4);
-$spinner: rem-calc(20);
-$spinner-speed: 0.8s;
-
-
-
-/** Button Settings */
-$button-background: $red;
-$button-hover: darken($red, 10%);
-$button-color: $white;
-$button-font-family: $header-font;
-$button-font-size: rem-calc(22);
-$button-large-font-size: rem-calc(34);
-$button-small-font-size: rem-calc(18);
-
-$input-border-color: $gray;
-$input-error-color: $error;
-$input-success-color: $success;
-$input-focus-color: $success;
-
-$input-disabled-color: rgba(0,0,0, .26);
-$input-disabled-solid-color: $gray;
-
-// Radio Buttons
-$radio-fill-color: $black;
-$radio-empty-color: $gray;
-
 
 /**
  * Social Buttons
@@ -205,20 +177,6 @@ $social-icon-size: rem-calc(45);
 
 
 
-/**
- * Navigation
- */
-$navigation-font-size: rem-calc(20);
-
-/** mobile navigation*/
-$burger-color: $white;
-$burger-height: rem-calc(3);
-$burger-gutter: rem-calc(5);
-$burger-width: rem-calc(20);
-
-
-/** @sum of burger height and gutter  */
-$burger-hg: rem-calc(8);
 
 
 

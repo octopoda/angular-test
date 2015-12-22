@@ -26,7 +26,7 @@
         vm.noCookie = false;
 
         //dev mode?
-        vm.dev = true;
+        vm.dev = false;
 
         /** Scope Vars */
         vm.setGameMode = setGameMode;

@@ -1,3 +1,12 @@
+/*
+|--------------------------------------------------------------------------
+| Error Exception Handler
+|--------------------------------------------------------------------------
+|
+| Handle the Errors and passed them to the provider for console. 
+| 
+|
+*/
 (function() {
     'use strict';
 
