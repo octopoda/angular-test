@@ -39,7 +39,8 @@ $dev: false !default;
 	$fontPath: '../assets/fonts';
 } @else  {
 	$imagePath: 'https://s3.amazonaws.com/2721west-assets/images/namegame';
-	$fontPath: 'https://s3.amazonaws.com/2721west-assets/fonts/namgame';
+	$fontPath: '/assets/fonts/namegame';
+	// $fontPath: 'https://s3.amazonaws.com/2721west-assets/fonts/namgame';
 }
 
 
