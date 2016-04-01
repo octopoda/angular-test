@@ -32,14 +32,14 @@ $warning: orange;
  * Image Paths
  */
 
-$dev: true !default;
+$dev: false !default;
 
 @if $dev { 
-	$imagePath: '/assets/images/';
-	$fontPath: '/assets/fonts';
+	$imagePath: '../assets/images';
+	$fontPath: '../assets/fonts';
 } @else  {
-	$imagePath: 'https://s3.amazonaws.com/2721west-assets/images/';
-	$fontPath: 'https://s3.amazonaws.com/2721west-assets/fonts';
+	$imagePath: 'https://s3.amazonaws.com/2721west-assets/images/namegame';
+	$fontPath: 'https://s3.amazonaws.com/2721west-assets/fonts/namgame';
 }
 
 

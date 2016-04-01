@@ -58,8 +58,8 @@
         return function(exception, cause) {
             var appErrorPrefix = errorHandler.config.appErrorPrefix || '';
             var errorData = {exception: exception, cause: cause};
-            exception.message = appErrorPrefix + exception.message;
-            $delegate(exception, cause);
+            // exception.message = appErrorPrefix + exception.message;
+            // $delegate(exception, cause);
         };
     }
 

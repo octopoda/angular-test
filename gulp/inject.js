@@ -29,7 +29,7 @@ var _ = require('lodash');
 /**
  * Inject Files into HTML
  */
-gulp.task('inject', ['scripts', 'sass'], function () {
+gulp.task('inject', ['clean', 'partials', 'scripts', 'sass'], function () {
 	
 	var injectStyles = gulp.src([
 		path.join(conf.paths.tmp, '/serve/assets/css/**/*.css'),
@@ -41,9 +41,20 @@ gulp.task('inject', ['scripts', 'sass'], function () {
 		path.join(conf.paths.tmp, '/serve/assets/**/*.module.js')
 	], { read: false});
 
+	var injectPartials = gulp.src([
+		path.join(conf.paths.tmp, '/partials/**/*.js')
+	], {read: false });
+
 
 	var injectOptions = {
 		ignorePath: [conf.paths.app, path.join(conf.paths.tmp, '/serve')],
+		addRootSlash: false
+	}
+
+	var partialsInjectOptions = {
+		starttag: '<!-- inject:partials -->',
+		endtag: '<!-- endinject -->',
+		ignorePath: path.join(conf.paths.tmp, '/partials'),
 		addRootSlash: false
 	}
 
@@ -52,7 +63,30 @@ gulp.task('inject', ['scripts', 'sass'], function () {
 	])
 		.pipe(plugins.inject(injectStyles, injectOptions))
 	    .pipe(plugins.inject(injectScripts, injectOptions))
+	    .pipe(plugins.inject(injectPartials, partialsInjectOptions))
 	    .pipe(wiredep(_.extend({}, conf.wiredep)))
+	    .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve')));
+
+});
+
+
+gulp.task('inject-partials', ['partials'], function () {
+
+	var injectPartials = gulp.src([
+		path.join(conf.paths.tmp, '/partials/*.js')
+	], {read: false });
+
+	var partialsInjectOptions = {
+		starttag: '<!-- inject:partials -->',
+		// ignorePath: path.join(conf.paths.tmp, '/partials'), 
+		addRootSlash: false
+	}
+
+	return gulp.src([
+		path.join(conf.paths.app, '/*.html')
+	])
+		.pipe(plugins.inject(injectPartials, partialsInjectOptions))
+		.pipe(wiredep(_.extend({}, conf.wiredep)))
 	    .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve')));
 
 });

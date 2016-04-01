@@ -80,7 +80,6 @@
        }
 
        function checkRound() {
-            console.log(vm.Rounds);
             if (vm.Rounds >= 6) {
                 vm.Rounds = 0;
                 goToResults();

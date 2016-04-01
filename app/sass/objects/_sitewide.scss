@@ -12,10 +12,9 @@ html {
 }
 
 body {
-	// @include verticalGradient($gray-dark, $gray-darker);
 	background: $gray-dark;
 	background-image: url('#{$imagePath}/city-scape.png');
-	background-image: url('#{$imagePath}/city-scape.png'), linear-gradient(top, $gray-dark 0%, $gray-darker 60%);
+	background-image: url('#{$imagePath}/city-scape.png'), linear-gradient(to bottom, $gray-dark 0%, $gray-darker 60%);
 	height:100%;
 	background-repeat:repeat-x;
 	background-position:center bottom;
@@ -45,7 +44,7 @@ body {
 	}
 	to {
 		background: $gray-dark;
-		background-image: url('#{$imagePath}/city-scape.png'), linear-gradient(top, $gray-dark 0%, $gray-darker 60%);
+		background-image: url('#{$imagePath}/city-scape.png'), linear-gradient(to bottom, $gray-dark 0%, $gray-darker 60%);
 		background-repeat:repeat-x;
 		background-position:center bottom;
 	}

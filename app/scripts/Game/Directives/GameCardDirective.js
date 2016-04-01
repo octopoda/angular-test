@@ -24,7 +24,7 @@
             controllerAs: 'vm',
             restrict: 'EA',
             replace: true,
-            templateUrl: '/templates/Game/GameCard.html',
+            templateUrl: './templates/Game/GameCard.html',
             scope: {
             	gameCards: "=",
             	winner: "="

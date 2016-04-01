@@ -24,7 +24,7 @@
     			state: 'results',
     			config: {
     				url: '/results', 
-    				templateUrl: 'templates/Results/index.html',
+    				templateUrl: './templates/Results/index.html',
                     controller: 'ResultsController',
     				controllerAs: 'vm',
                     title: "How did you do?"

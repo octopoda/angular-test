@@ -46,20 +46,22 @@ gulp.task('partials', function () {
     }))
     .pipe(plugins.angularTemplatecache('templateCacheHtml.js', {
       module: 'willowtree',
-      root: 'templates'
+      root: './templates'
     }))
-    .pipe(gulp.dest(conf.paths.tmp + '/paritals'));
+    
+    .pipe(gulp.dest(conf.paths.tmp + '/partials'));
 });
 
 /**
  * Minify and Inject HTML
  */
-gulp.task('html', ['inject', 'partials'], function () {
+gulp.task('html', ['clean', 'inject', 'partials'], function () {
   var partialsInjectFile = gulp.src(path.join(conf.paths.tmp, '/partials/templateCahceHtml.js'), { read:false });
   
   var partialsInjectOptions = {
-    starttag: '<!-- inject:templates -->',
-    ignorePath: path.join(conf.paths.tmp, '/templates'),
+    starttag: '<!-- inject:partials -->',
+    relative: true,
+    // ignorePath: path.join(conf.paths.tmp, '/partials'),
     addRootSlash: false
   };
 
@@ -69,30 +71,39 @@ gulp.task('html', ['inject', 'partials'], function () {
   var assets;
 
   return gulp.src(path.join(conf.paths.tmp, 'serve/*.html'))
+    
     .pipe(plugins.inject(partialsInjectFile, partialsInjectOptions))
+
     .pipe(assets = plugins.useref.assets())
     .pipe(plugins.rev())
+    
     .pipe(jsFilter)
-    .pipe(plugins.sourcemaps.init())
-    .pipe(plugins.uglify({ preserveComments: plugins.uglifySaveLicense })).on('error', conf.errorHandler('Uglify'))
-    .pipe(plugins.sourcemaps.write('maps'))
+    // .pipe(plugins.sourcemaps.init())
+    // .pipe(plugins.uglify({ preserveComments: plugins.uglifySaveLicense })).on('error', conf.errorHandler('Uglify'))
+    // .pipe(plugins.sourcemaps.write('maps'))
     .pipe(jsFilter.restore)
+    
     .pipe(cssFilter)
-    .pipe(plugins.sourcemaps.init())
+    // .pipe(plugins.sourcemaps.init())
     .pipe(plugins.csso())
-    .pipe(plugins.sourcemaps.write('maps'))
+    // .pipe(plugins.sourcemaps.write('maps'))
     .pipe(cssFilter.restore)
+    
+    
+
     .pipe(assets.restore())
     .pipe(plugins.useref())
     .pipe(plugins.revReplace())
+    
     .pipe(htmlFilter)
-    .pipe(plugins.minifyHtml({
-      empty: true,
-      spare: true,
-      quotes: true,
-      conditionals: true
-    }))
+    // .pipe(plugins.minifyHtml({
+    //   empty: true,
+    //   spare: true,
+    //   quotes: true,
+    //   conditionals: true
+    // }))
     .pipe(htmlFilter.restore)
+    
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
     .pipe(plugins.size({ title: path.join(conf.paths.dist, '/'), showFiles: true }));
 });
@@ -135,7 +146,7 @@ gulp.task('images', function() {
 
 
 
-gulp.task('build', ['html', 'other', 'fonts', 'images']);
+gulp.task('build', ['clean', 'html', 'other', 'fonts', 'images']);
 
 
 

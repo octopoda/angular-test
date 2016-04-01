@@ -25,7 +25,7 @@
     			state: 'game',
     			config: {
     				url: '/game', 
-    				templateUrl: 'templates/Game/index.html',
+    				templateUrl: './templates/Game/index.html',
                     controller: 'NameGameController',
     				controllerAs: 'vm',
                     title: "Do you know who they are?"

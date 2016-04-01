@@ -26,7 +26,7 @@
     			state: 'intro',
     			config: {
     				url: '/', 
-    				templateUrl: 'templates/Intro/index.html',
+    				templateUrl: './templates/Intro/index.html',
                     controller: 'IntroController',
     				controllerAs: 'vm',
                     title: "Wanna Play a Game?"
